@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Pandula
+      changes:
+        - createTable:
+            tableName: ticket_config
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: total_tickets
+                  type: int
+              - column:
+                  name: ticket_release_rate
+                  type: int
+              - column:
+                  name: customer_retrieval_rate
+                  type: int
+              - column:
+                  name: max_ticket_capacity
+                  type: int

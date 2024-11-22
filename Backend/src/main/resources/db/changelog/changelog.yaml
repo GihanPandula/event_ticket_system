@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: db/tables/users.yaml
+  - include:
+        file: db/tables/vendors.yaml
+  - include:
+        file: db/tables/ticket_config.yaml
