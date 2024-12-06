@@ -3,30 +3,45 @@ package utils;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Logger {
     private static Logger instance;
-    private final PrintWriter writer;
+    private static PrintWriter writer;
 
-    private Logger() throws IOException {
-        writer = new PrintWriter(new FileWriter("log.txt", true), true);
+    // Private constructor to prevent instantiation
+    private Logger() {
+        try {
+            writer = new PrintWriter(new FileWriter("ticket_system_log.txt", true)); // Append mode
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to initialize logger", e);
+        }
     }
 
+    // Singleton pattern to ensure only one instance of Logger
     public static synchronized Logger getInstance() {
         if (instance == null) {
-            try {
-                instance = new Logger();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            instance = new Logger();
         }
         return instance;
     }
 
-    public synchronized void log(String message) {
-        String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        writer.println(timestamp + " - " + message);
+    // Method to log messages to the console and file
+    public static synchronized void log(String message) {
+        String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+        String logMessage = timestamp + " - " + message;
+
+        // Log to console
+        System.out.println(logMessage);
+
+        // Log to file
+        writer.println(logMessage);
+        writer.flush();
+    }
+
+    // Close the writer (called when the program is exiting)
+    public synchronized void close() {
+        writer.close();
     }
 }

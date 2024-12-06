@@ -36,7 +36,6 @@ public class VendorController {
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
-
     }
 }
 

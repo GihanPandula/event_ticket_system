@@ -5,30 +5,32 @@ import utils.Logger;
 
 public class Vendor implements Runnable {
     private final TicketPool ticketPool;
-    private final int ticketReleaseRate;
+    private final int releaseRate;
     private final int vendorId;
-    private final Logger logger = Logger.getInstance();
 
-    public Vendor(TicketPool ticketPool, int ticketReleaseRate, int vendorId) {
+    public Vendor(TicketPool ticketPool, int releaseRate, int vendorId) {
         this.ticketPool = ticketPool;
-        this.ticketReleaseRate = ticketReleaseRate;
+        this.releaseRate = releaseRate;
         this.vendorId = vendorId;
     }
 
     @Override
     public void run() {
-        try {
-            while (ticketPool.canAddMoreTickets()) {
-                if (ticketPool.addTicket(vendorId)) {
-                    logger.log("Vendor " + vendorId + " added a ticket.");
-                    Thread.sleep(ticketReleaseRate);
+        int ticketId = 1;
+        while (!Thread.currentThread().isInterrupted()) {
+            for (int i = 0; i < releaseRate; i++) {
+                if (ticketPool.addTicket(ticketId)) {
+                    Logger.log("Vendor " + vendorId + " added ticket #" + ticketId);
+                    ticketId++;
                 } else {
-                    logger.log("Vendor " + vendorId + " cannot add tickets. Ticket pool is full. Waiting for customers to buy tickets.");
-                    Thread.sleep(1000); // Wait before trying again
+                    Logger.log("Vendor " + vendorId + " could not add ticket (Pool full or limit reached).");
                 }
             }
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
+            try {
+                Thread.sleep(1000); // Simulate time delay
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
         }
     }
 }

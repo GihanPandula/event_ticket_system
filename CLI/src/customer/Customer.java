@@ -5,30 +5,31 @@ import utils.Logger;
 
 public class Customer implements Runnable {
     private final TicketPool ticketPool;
-    private final int customerRetrievalRate;
+    private final int retrievalRate;
     private final int customerId;
-    private final Logger logger = Logger.getInstance();
 
-    public Customer(TicketPool ticketPool, int customerRetrievalRate, int customerId) {
+    public Customer(TicketPool ticketPool, int retrievalRate, int customerId) {
         this.ticketPool = ticketPool;
-        this.customerRetrievalRate = customerRetrievalRate;
+        this.retrievalRate = retrievalRate;
         this.customerId = customerId;
     }
 
     @Override
     public void run() {
-        try {
-            while (!ticketPool.allTicketsSold() || ticketPool.getRemainingTickets() > 0) {
-                if (ticketPool.retrieveTicket(customerId)) {
-                    logger.log("Customer " + customerId + " bought a ticket.");
-                    Thread.sleep(customerRetrievalRate);
+        while (!Thread.currentThread().isInterrupted()) {
+            for (int i = 0; i < retrievalRate; i++) {
+                Integer ticket = ticketPool.retrieveTicket();
+                if (ticket != null) {
+                    Logger.log("Customer " + customerId + " purchased ticket #" + ticket);
                 } else {
-                    logger.log("Customer " + customerId + " cannot buy tickets. No tickets left. Waiting for vendors to release tickets.");
-                    Thread.sleep(1000); // Wait before trying again
+                    Logger.log("Customer " + customerId + " found no tickets available.");
                 }
             }
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
+            try {
+                Thread.sleep(1000); // Simulate time delay
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
         }
     }
 }
