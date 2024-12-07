@@ -3,6 +3,7 @@ package com.oop.event_ticket_system.controller;
 import com.oop.event_ticket_system.domain.TicketConfig;
 import com.oop.event_ticket_system.dto.TicketConfigRequest;
 import com.oop.event_ticket_system.dto.TicketResponse;
+import com.oop.event_ticket_system.exception.TicketPurchaseException;
 import com.oop.event_ticket_system.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -34,9 +35,13 @@ public class TicketController {
 
     @PostMapping("/add")
     public TicketResponse addTickets(@RequestParam int count) {
+        if (count <= 0) {
+            throw new TicketPurchaseException("Ticket count must be greater than zero.");
+        }
         ticketService.addTickets(count);
         return new TicketResponse(ticketService.getCurrentTickets(), "Tickets added successfully.");
     }
+
 
     @PostMapping("/purchase")
     public TicketResponse purchaseTickets(@RequestParam int count) {

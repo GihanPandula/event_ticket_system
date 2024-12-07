@@ -67,11 +67,14 @@ public class TicketService {
     }
 
     public void addTickets(int count) {
-        if (activeTicketConfig != null) {
-            activeTicketConfig.setTotalTickets(activeTicketConfig.getTotalTickets() + count);
-            configRepository.save(activeTicketConfig);
+        if (activeTicketConfig == null || "inactive".equals(activeTicketConfig.getStatus())) {
+            throw new TicketPurchaseException("Cannot add tickets to an inactive or non-existent ticket pool.");
         }
+
+        activeTicketConfig.setTotalTickets(activeTicketConfig.getTotalTickets() + count);
+        configRepository.save(activeTicketConfig);
     }
+
 
     public void retrieveTickets(int count) {
         if (activeTicketConfig == null || "inactive".equals(activeTicketConfig.getStatus())) {
