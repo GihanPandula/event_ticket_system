@@ -1,0 +1,55 @@
+package com.oop.event_ticket_system.controller;
+
+import com.oop.event_ticket_system.domain.TicketConfig;
+import com.oop.event_ticket_system.dto.TicketConfigRequest;
+import com.oop.event_ticket_system.dto.TicketResponse;
+import com.oop.event_ticket_system.service.TicketService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/tickets")
+public class TicketController {
+
+    @Autowired
+    private TicketService ticketService;
+
+    @PostMapping("/initialize")
+    public TicketResponse initializeOrUpdatePool(@RequestBody TicketConfigRequest configRequest) {
+        TicketConfig config = new TicketConfig();
+        config.setTotalTickets(configRequest.getTotalTickets());
+        config.setTicketReleaseRate(configRequest.getTicketReleaseRate());
+        config.setCustomerRetrievalRate(configRequest.getCustomerRetrievalRate());
+        config.setMaxTicketCapacity(configRequest.getMaxTicketCapacity());
+
+        ticketService.initializeOrUpdatePool(config);
+        return new TicketResponse(ticketService.getCurrentTickets(), "Ticket pool initialized or updated successfully.");
+    }
+
+    @PostMapping("/reset")
+    public String resetTicketPool(@RequestParam int defaultTickets,
+                                  @RequestParam int defaultReleaseRate,
+                                  @RequestParam int defaultRetrievalRate,
+                                  @RequestParam int defaultCapacity) {
+        ticketService.resetActiveTicketPool(defaultTickets, defaultReleaseRate, defaultRetrievalRate, defaultCapacity);
+        return "Ticket pool reset successfully.";
+    }
+
+    @PostMapping("/add")
+    public TicketResponse addTickets(@RequestParam int count) throws InterruptedException {
+        ticketService.addTickets(count);
+        return new TicketResponse(ticketService.getCurrentTickets(), "Tickets added successfully.");
+    }
+
+    @PostMapping("/purchase")
+    public TicketResponse purchaseTickets(@RequestParam int count) throws InterruptedException {
+        ticketService.retrieveTickets(count);
+        return new TicketResponse(ticketService.getCurrentTickets(), "Tickets purchased successfully.");
+    }
+
+    @GetMapping("/current")
+    public TicketResponse getCurrentTickets() {
+        int currentTickets = ticketService.getCurrentTickets();
+        return new TicketResponse(currentTickets, "Retrieved current ticket count.");
+    }
+}

@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Pandula
+      changes:
+        - createTable:
+            tableName: ticket_pool
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: available_tickets
+                  type: int
+              - column:
+                  name: released_tickets
+                  type: int

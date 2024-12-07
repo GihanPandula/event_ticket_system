@@ -5,3 +5,5 @@ databaseChangeLog:
         file: db/tables/vendors.yaml
   - include:
         file: db/tables/ticket_config.yaml
+  - include:
+        file: db/tables/ticket_pool.yaml

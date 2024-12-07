@@ -16,11 +16,16 @@ databaseChangeLog:
                   name: total_tickets
                   type: int
               - column:
+                  name: max_ticket_capacity
+                  type: int
+              - column:
                   name: ticket_release_rate
                   type: int
               - column:
                   name: customer_retrieval_rate
                   type: int
               - column:
-                  name: max_ticket_capacity
-                  type: int
+                  name: status
+                  type: varchar(10) # Use ENUM in MySQL for "active"/"inactive" for better constraints
+                  defaultValue: "active"
+
