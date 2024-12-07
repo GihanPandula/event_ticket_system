@@ -1,7 +1,10 @@
 package com.oop.event_ticket_system.service;
 
 import com.oop.event_ticket_system.domain.TicketConfig;
+import com.oop.event_ticket_system.exception.TicketConfigNotFoundException;
+import com.oop.event_ticket_system.exception.TicketPurchaseException;
 import com.oop.event_ticket_system.repository.TicketConfigRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +24,6 @@ public class TicketService {
         if (existingConfig.isPresent()) {
             TicketConfig config = existingConfig.get();
             if (config.getTotalTickets() > 0) {
-                // Update existing active ticket pool
                 config.setTotalTickets(newConfig.getTotalTickets());
                 config.setMaxTicketCapacity(newConfig.getMaxTicketCapacity());
                 config.setTicketReleaseRate(newConfig.getTicketReleaseRate());
@@ -29,7 +31,6 @@ public class TicketService {
                 configRepository.save(config);
                 activeTicketConfig = config;
             } else {
-                // Mark old pool as inactive and create a new one
                 config.setStatus("inactive");
                 configRepository.save(config);
 
@@ -38,27 +39,26 @@ public class TicketService {
                 activeTicketConfig = newConfig;
             }
         } else {
-            // No active pool exists, create a new one
             newConfig.setStatus("active");
             configRepository.save(newConfig);
             activeTicketConfig = newConfig;
         }
     }
 
-    public void resetActiveTicketPool(int defaultTickets, int defaultReleaseRate, int defaultRetrievalRate, int defaultCapacity) {
+    @Transactional
+    public void resetActiveTicketPool() {
         Optional<TicketConfig> existingConfig = configRepository.findByStatus("active");
 
         if (existingConfig.isPresent()) {
-            TicketConfig config = existingConfig.get();
-            config.setTotalTickets(defaultTickets);
-            config.setTicketReleaseRate(defaultReleaseRate);
-            config.setCustomerRetrievalRate(defaultRetrievalRate);
-            config.setMaxTicketCapacity(defaultCapacity);
+            TicketConfig oldConfig = existingConfig.get();
 
-            configRepository.save(config);
-            activeTicketConfig = config;
+            // Delete the active configuration from the database
+            configRepository.delete(oldConfig);
+
+            // Clear the in-memory reference to the active configuration
+            activeTicketConfig = null;
         } else {
-            throw new IllegalStateException("No active ticket pool found to reset.");
+            throw new TicketConfigNotFoundException("No active ticket pool found to reset.");
         }
     }
 
@@ -74,15 +74,22 @@ public class TicketService {
     }
 
     public void retrieveTickets(int count) {
-        if (activeTicketConfig != null) {
-            int remaining = activeTicketConfig.getTotalTickets() - count;
-            activeTicketConfig.setTotalTickets(Math.max(0, remaining));
-
-            if (remaining <= 0) {
-                activeTicketConfig.setStatus("inactive");
-            }
-
-            configRepository.save(activeTicketConfig);
+        if (activeTicketConfig == null || "inactive".equals(activeTicketConfig.getStatus())) {
+            throw new TicketPurchaseException("Ticket pool is inactive. No tickets available for purchase.");
         }
+
+        if (activeTicketConfig.getTotalTickets() < count) {
+            throw new TicketPurchaseException("Not enough tickets available to complete the purchase.");
+        }
+
+        int remaining = activeTicketConfig.getTotalTickets() - count;
+        activeTicketConfig.setTotalTickets(Math.max(0, remaining));
+
+        if (remaining <= 0) {
+            activeTicketConfig.setStatus("inactive"); // Mark pool as inactive if all tickets are sold
+        }
+
+        configRepository.save(activeTicketConfig);
     }
+
 }

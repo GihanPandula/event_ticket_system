@@ -27,22 +27,19 @@ public class TicketController {
     }
 
     @PostMapping("/reset")
-    public String resetTicketPool(@RequestParam int defaultTickets,
-                                  @RequestParam int defaultReleaseRate,
-                                  @RequestParam int defaultRetrievalRate,
-                                  @RequestParam int defaultCapacity) {
-        ticketService.resetActiveTicketPool(defaultTickets, defaultReleaseRate, defaultRetrievalRate, defaultCapacity);
-        return "Ticket pool reset successfully.";
+    public String resetTicketPool() {
+        ticketService.resetActiveTicketPool();
+        return "Ticket pool deleted successfully.";
     }
 
     @PostMapping("/add")
-    public TicketResponse addTickets(@RequestParam int count) throws InterruptedException {
+    public TicketResponse addTickets(@RequestParam int count) {
         ticketService.addTickets(count);
         return new TicketResponse(ticketService.getCurrentTickets(), "Tickets added successfully.");
     }
 
     @PostMapping("/purchase")
-    public TicketResponse purchaseTickets(@RequestParam int count) throws InterruptedException {
+    public TicketResponse purchaseTickets(@RequestParam int count) {
         ticketService.retrieveTickets(count);
         return new TicketResponse(ticketService.getCurrentTickets(), "Tickets purchased successfully.");
     }
