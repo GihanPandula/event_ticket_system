@@ -1,0 +1,22 @@
+<div class="container">
+    <h1>MyTickets</h1>
+  
+    <!-- Register and Sign In -->
+    <div class="register-signin">
+      <button class="register">Register</button>
+      <button class="signin">Sign In</button>
+    </div>
+  
+    <!-- Tickets Section -->
+    <div class="tickets">
+      <div class="ticket" *ngFor="let ticket of tickets">
+        <img [src]="ticket.image" alt="{{ ticket.title }}" />
+        <h2>{{ ticket.title }}</h2>
+        <p>{{ ticket.date | date: 'MMM d, y, h:mm a' }}</p>
+        <p>{{ ticket.venue }}</p>
+        <p class="price">{{ ticket.price | currency: 'LKR' }} upwards</p>
+        <button [routerLink]="['/ticket']" [queryParams]="{ title: ticket.title }">Buy Tickets</button>
+      </div>
+    </div>
+</div>
+  

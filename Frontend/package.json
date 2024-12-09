@@ -1,5 +1,5 @@
 {
-  "name": "ticket-system",
+  "name": "even-ticket-system",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:ticket-system": "node dist/ticket-system/server/server.mjs"
+    "serve:ssr:even-ticket-system": "node dist/even-ticket-system/server/server.mjs"
   },
   "private": true,
   "dependencies": {

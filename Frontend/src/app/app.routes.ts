@@ -1,19 +1,16 @@
-import { Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-
-export class AppModule { }
-
-export class RegisterComponent {
-  user = {
-    confirmPassword: ''
-  };
-}
+import { RouterModule, Routes } from '@angular/router';
+import { HomepageComponent } from './homepage/homepage.component';
+import { TicketComponent } from './ticket/ticket.component';
+import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
-  { path: '', component: LoginComponent },
-  {
-    path: 'register',
-    loadComponent: () => import('./register/register.component').then(m => m.RegisterComponent)
-  }
-
+  { path: '', component: HomepageComponent }, // Default route
+  { path: 'ticket', component: TicketComponent }, // Route for the Ticket page
+  { path: '**', redirectTo: '' } // Redirect unknown routes to homepage
 ];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }

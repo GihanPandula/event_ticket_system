@@ -1,0 +1,131 @@
+/* General page styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+.tickets {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ticket {
+  margin: 10px;
+}
+
+/* Container styling */
+.container {
+  width: 80%;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+/* Title styling */
+h1 {
+  text-align: center;
+  color: #003d99;
+  margin-bottom: 20px;
+}
+
+/* Ticket card styling */
+.ticket {
+  display: inline-block;
+  width: 22%;
+  margin: 1%;
+  padding: 10px;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.ticket:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Image styling */
+.ticket img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Event title */
+.ticket h2 {
+  font-size: 18px;
+  color: #333;
+  margin: 10px 0;
+}
+
+/* Date and venue */
+.ticket p {
+  font-size: 14px;
+  color: #666;
+  margin: 5px 0;
+}
+
+/* Price styling */
+.ticket .price {
+  font-weight: bold;
+  color: #e91e63;
+  margin-bottom: 10px;
+}
+
+/* Button styling */
+.ticket button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.ticket button:hover {
+  background-color: #45a049;
+}
+
+/* Register and Sign In buttons */
+.register-signin {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.register-signin button {
+  margin: 0 5px;
+  padding: 8px 15px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.register-signin .register {
+  background-color: #007bff;
+  color: white;
+}
+
+.register-signin .register:hover {
+  background-color: #0056b3;
+}
+
+.register-signin .signin {
+  background-color: #28a745;
+  color: white;
+}
+
+.register-signin .signin:hover {
+  background-color: #218838;
+}

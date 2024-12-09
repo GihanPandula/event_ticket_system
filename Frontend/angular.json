@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ticket-system": {
+    "even-ticket-system": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/ticket-system",
+            "outputPath": "dist/even-ticket-system",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ticket-system:build:production"
+              "buildTarget": "even-ticket-system:build:production"
             },
             "development": {
-              "buildTarget": "ticket-system:build:development"
+              "buildTarget": "even-ticket-system:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -99,6 +99,6 @@
     }
   },
   "cli": {
-    "analytics": "320be0f4-cb14-4103-8f88-0299c8641fc8"
+    "analytics": "b90eb6a0-a237-420f-b214-1c59398110f5"
   }
 }
