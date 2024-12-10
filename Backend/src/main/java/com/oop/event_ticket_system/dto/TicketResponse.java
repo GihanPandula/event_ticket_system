@@ -1,9 +1,10 @@
 package com.oop.event_ticket_system.dto;
 
 public class TicketResponse {
-    private int currentTickets;
-    private String message;
+    private int currentTickets; // Current number of tickets
+    private String message; // Message to be displayed
 
+    // Constructor
     public TicketResponse(int currentTickets, String message) {
         this.currentTickets = currentTickets;
         this.message = message;

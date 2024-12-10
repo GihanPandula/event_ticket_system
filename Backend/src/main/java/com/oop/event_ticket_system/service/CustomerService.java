@@ -8,9 +8,12 @@ import java.util.Optional;
 
 public interface CustomerService {
 
+    // Get all customers from the database
     Optional<Customer> getCustomerBy(String userName);
 
+    // Get all customers from the database
     CustomerLoginResours login(CustomerLoginResours customerLoginResours);
 
+    // Register a new customer to the database and return the customer id
     String registerCustomer(RegisterCustomerResource registerCustomerResource);
 }

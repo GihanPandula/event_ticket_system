@@ -12,30 +12,33 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/customers")
 public class CustomerController {
 
+    // Customer service
     private final CustomerService customerService;
 
+    // Constructor
     @Autowired
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
     }
 
 
-    @PostMapping("/register")
+    @PostMapping("/register") // Register a customer
     public ResponseEntity<String> registerCustomer(@RequestBody RegisterCustomerResource registerCustomerResource) {
         try {
             String result = customerService.registerCustomer(registerCustomerResource);
             return ResponseEntity.ok(result);
-        } catch (RuntimeException e) {
+        } catch (RuntimeException e) { // If there is an error
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
+    // Login a customer
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody CustomerLoginResours customerLoginResours) {
         try {
             return ResponseEntity.ok(customerService.login(customerLoginResours));
         } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.badRequest().body(e.getMessage()); // If there is an error
         }
     }
 

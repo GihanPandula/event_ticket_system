@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class GlobalExceptionHandler {
 
   // Handle TicketConfigNotFoundException
-  @ExceptionHandler(TicketConfigNotFoundException.class)
+  @ExceptionHandler(TicketConfigNotFoundException.class) // Handle TicketConfigNotFoundException
   public ResponseEntity<String> handleTicketConfigNotFoundException(TicketConfigNotFoundException ex) {
-    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage()); // Return 404 Not Found
   }
 
   // Handle TicketPurchaseException
   @ExceptionHandler(TicketPurchaseException.class)
   public ResponseEntity<String> handleTicketPurchaseException(TicketPurchaseException ex) {
-    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage()); // Return 400 Bad Request
   }
 
   // Handle other exceptions

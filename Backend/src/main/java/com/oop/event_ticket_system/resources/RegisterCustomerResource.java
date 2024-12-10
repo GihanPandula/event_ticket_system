@@ -1,5 +1,6 @@
 package com.oop.event_ticket_system.resources;
 
+// RegisterCustomerResource class is used to get the data from the frontend when registering a customer
 public class RegisterCustomerResource {
     private String firstName;
     private String lastName;
@@ -8,6 +9,7 @@ public class RegisterCustomerResource {
     private String password;
     private String confirmPassword;
 
+    // Getters and Setters for the RegisterCustomerResource class
     public String getFirstName() {
         return firstName;
     }

@@ -20,6 +20,7 @@ public class EventTicketSystemApplication {
 	}
 
 	@Bean
+	// CORS Configuration for the frontend
 	public CorsFilter corsFilter() {
 		CorsConfiguration corsConfiguration = new CorsConfiguration();
 		corsConfiguration.setAllowCredentials(true);
@@ -28,11 +29,14 @@ public class EventTicketSystemApplication {
 				"Origin", "Content-Type", "Accept", "Authorization",
 				"Access-Control-Request-Method", "Access-Control-Request-Headers"
 		));
+		// Expose headers to the frontend for the client to access
 		corsConfiguration.setExposedHeaders(Arrays.asList(
 				"Origin", "Content-Type", "Accept", "Authorization"
 		));
+		// Allowed methods for the frontend
 		corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
 
+		// URL based CORS configuration
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		source.registerCorsConfiguration("/**", corsConfiguration);
 		return new CorsFilter(source);

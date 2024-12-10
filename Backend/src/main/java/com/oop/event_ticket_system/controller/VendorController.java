@@ -12,29 +12,29 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/vendors")
 public class VendorController {
 
-    private final VendorService vendorService;
+    private final VendorService vendorService; // VendorService dependency
 
     @Autowired
     public VendorController(VendorService vendorService) {
         this.vendorService = vendorService;
-    }
+    } // Constructor injection
 
     @PostMapping("/register")
     public ResponseEntity<String> registerVendor(@RequestBody RegisterVendorResource registerVendorResource) {
         try {
-            String result = vendorService.registerVendor(registerVendorResource);
-            return ResponseEntity.ok(result);
+            String result = vendorService.registerVendor(registerVendorResource); // Register vendor
+            return ResponseEntity.ok(result); // Return success message
         } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.badRequest().body(e.getMessage()); // Return error message
         }
     }
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody VendorLoginResource vendorLoginResource) {
         try {
-            return ResponseEntity.ok(vendorService.login(vendorLoginResource));
+            return ResponseEntity.ok(vendorService.login(vendorLoginResource)); // Return vendor details
         } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.badRequest().body(e.getMessage()); // Return error message
         }
     }
 }

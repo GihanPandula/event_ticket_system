@@ -6,17 +6,19 @@ import jakarta.persistence.*;
 @Table(name = "ticket_config")
 public class TicketConfig {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-generate ID
     private Long id;
 
-    private int totalTickets;
-    private int maxTicketCapacity;
-    private int ticketReleaseRate;
-    private int customerRetrievalRate;
+    private int totalTickets; // Total number of tickets available
+    private int maxTicketCapacity; // Maximum number of tickets that can be released at a time
+    private int ticketReleaseRate; // Number of tickets released per second
+    private int customerRetrievalRate; // Number of tickets a customer can retrieve per second
 
+    // Status of the ticket configuration
     @Column(nullable = false)
-    private String status = "active"; // Defaults to "active"
+    private String status = "active"; // Defaults to "active" status when created
 
+    // Getters and Setters
     public Long getId() {
         return id;
     }
