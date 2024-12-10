@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+// HomepageComponent component
 @Component({
   selector: 'app-homepage',
   standalone: true,
@@ -9,6 +10,8 @@ import { RouterModule } from '@angular/router';
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.css']
 })
+
+// HomepageComponent class
 export class HomepageComponent {
   tickets = [
     {

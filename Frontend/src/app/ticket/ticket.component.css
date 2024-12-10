@@ -72,6 +72,17 @@ input:focus {
   transition: background-color 0.3s ease;
 }
 
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.reset-btn {
+  margin-left: auto;
+}
+
 .btn:hover {
   background-color: #0056b3;
 }

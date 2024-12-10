@@ -8,12 +8,19 @@ import com.oop.event_ticket_system.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/tickets")
 public class TicketController {
 
     @Autowired
     private TicketService ticketService;
+
+    @GetMapping("/")
+    public String checkServer() {
+        return "API is working!";
+    }
+
 
     @PostMapping("/initialize")
     public TicketResponse initializeOrUpdatePool(@RequestBody TicketConfigRequest configRequest) {
@@ -41,7 +48,6 @@ public class TicketController {
         ticketService.addTickets(count);
         return new TicketResponse(ticketService.getCurrentTickets(), "Tickets added successfully.");
     }
-
 
     @PostMapping("/purchase")
     public TicketResponse purchaseTickets(@RequestParam int count) {

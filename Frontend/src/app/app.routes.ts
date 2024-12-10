@@ -9,6 +9,7 @@ export const routes: Routes = [
   { path: '**', redirectTo: '' } // Redirect unknown routes to homepage
 ];
 
+// Export the routes as a module so the app module can import it
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

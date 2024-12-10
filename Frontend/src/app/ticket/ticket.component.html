@@ -1,35 +1,73 @@
+// HTML Template for Ticket Component
 <div class="container">
-    <div class="card">
-        <h2>ADD TICKETS</h2>
-        <form>
-        <label for="totalTickets">Total Tickets</label>
-        <input type="number" id="totalTickets" placeholder="Enter total tickets" />
-    
-        <label for="maxTickets">Max Ticket Count</label>
-        <input type="number" id="maxTickets" placeholder="Enter max ticket count" />
-    
-        <label for="customerRate">Customer Retrieval Rate</label>
-        <input type="number" id="customerRate" placeholder="Enter customer rate" />
-    
-        <label for="vendorRate">Vendor Retrieval Rate</label>
-        <input type="number" id="vendorRate" placeholder="Enter vendor rate" />
-    
-        <button type="button" class="btn">ADD</button>
-        </form>
-    </div>
-  
-    <div class="card">
-      <h2>AVAILABLE TICKETS</h2>
-      <p>Available Tickets: <span id="availableTickets">0</span></p>
-    </div>
-  
-    <div class="card">
-      <h2>PURCHASE TICKETS</h2>
-      <form>
-        <label for="ticketCount">Ticket Count</label>
-        <input type="number" id="ticketCount" placeholder="Enter ticket count" />
-  
-        <button type="button" class="btn">Purchase</button>
-      </form>
-    </div>
+  <div class="card">
+    <h2>ADD TICKETS</h2>
+    <form (ngSubmit)="addTickets()">
+      <label for="totalTickets">Total Tickets</label>
+      <input
+        type="number"
+        id="totalTickets"
+        [(ngModel)]="totalTickets"
+        name="totalTickets"
+        placeholder="Enter total tickets"
+        required
+      />
+
+      <label for="maxTickets">Max Ticket Count</label>
+      <input
+        type="number"
+        id="maxTickets"
+        [(ngModel)]="maxTickets"
+        name="maxTickets"
+        placeholder="Enter max ticket count"
+        required
+      />
+
+      <label for="customerRate">Customer Retrieval Rate</label>
+      <input
+        type="number"
+        id="customerRate"
+        [(ngModel)]="customerRate"
+        name="customerRate"
+        placeholder="Enter customer rate"
+        required
+      />
+
+      <label for="ticketReleaseRate">Ticket Release Rate</label>
+      <input
+        type="number"
+        id="ticketReleaseRate"
+        [(ngModel)]="ticketReleaseRate"
+        name="ticketReleaseRate"
+        placeholder="Enter ticket release rate"
+        required
+      />
+
+      <div class="button-container">
+        <button type="submit" class="btn">ADD</button>
+        <button type="button" class="btn reset-btn" (click)="resetForm()">RESET</button>
+      </div>
+    </form>
   </div>
+
+  <div class="card">
+    <h2>AVAILABLE TICKETS</h2>
+    <p>Available Tickets: <span id="availableTickets">{{ availableTickets }}</span></p>
+  </div>
+
+  <div class="card">
+    <h2>PURCHASE TICKETS</h2>
+    <form (ngSubmit)="purchaseTickets()">
+      <label for="ticketCount">Ticket Count</label>
+      <input
+        type="number"
+        id="ticketCount"
+        [(ngModel)]="ticketCount"
+        name="ticketCount"
+        placeholder="Enter ticket count"
+        required
+      />
+      <button type="submit" class="btn">Purchase</button>
+    </form>
+  </div>
+</div>
