@@ -1,6 +1,19 @@
 <div class="container">
   <div class="card">
     <h2>ADD TICKETS</h2>
+
+    <!-- Start and Stop buttons -->
+    <!-- <div class="button-container">
+      <button type="button" class="btn" (click)="start()">Start</button>
+      <button type="button" class="btn stop-btn" (click)="stop()">Stop</button>
+    </div> -->
+    <div class="button-container">
+      <button type="button" class="btn start-btn" [disabled]="isStarted" (click)="startFunction()">Start</button>
+      <button type="button" class="btn stop-btn" [disabled]="!isStarted" (click)="stopFunction()">Stop</button>
+    </div>
+    
+    <br>
+
     <form (ngSubmit)="addTickets()">
       <label for="totalTickets">Total Tickets</label>
       <input

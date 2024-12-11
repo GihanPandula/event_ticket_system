@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceService } from '../service.service';
 
-// Ticket component
 @Component({
   selector: 'app-ticket',
   templateUrl: './ticket.component.html',
@@ -12,79 +11,81 @@ import { ServiceService } from '../service.service';
   standalone: true,
   imports: [FormsModule, HttpClientModule], 
 })
-export class TicketComponent implements OnInit {  // Ticket component class
+
+export class TicketComponent implements OnInit {
   maxTickets: number;
   customerRate: number;
   ticketReleaseRate: number;
   availableTickets: number;
-  totalTickets: number; 
-  ticketCount: number;  
+  totalTickets: number;
+  ticketCount: number;
+  isStarted: boolean = false; // New state to track if the process is started
 
-  // Constructor
   constructor(private route: ActivatedRoute, private service: ServiceService) {
     this.maxTickets = 0;
     this.customerRate = 0;
     this.ticketReleaseRate = 0;
     this.availableTickets = 0;
-    this.totalTickets = 0; 
-    this.ticketCount = 0; 
+    this.totalTickets = 0;
+    this.ticketCount = 0;
   }
 
-  // Initialize component
   ngOnInit(): void {
-    this.route.queryParams.subscribe((params: any) => {
-      console.log(params); 
-    });
     this.loadAvailableTickets();
+  }
+
+  startFunction(): void {
+    this.isStarted = true;  // Set to true when start is clicked
+    // Enable form fields and allow API calls
+  }
+
+  stopFunction(): void {
+    this.isStarted = false;  // Set to false when stop is clicked
+    // Disable form fields and prevent further API calls
   }
 
   // Load available tickets
   loadAvailableTickets(): void {
     this.service.getAvailableTickets().subscribe(
       (response) => {
-        console.log('API Response:', response); // Debug response
-        this.availableTickets = response; 
+        this.availableTickets = response;
       },
       (error) => {
-        console.error('Error loading tickets:', error); // Debug error
+        console.error('Error loading tickets:', error);
       }
     );
   }
 
-  // Add tickets
   addTickets(): void {
+    if (!this.isStarted) return;  // Prevent action if stop is clicked
+
     const ticketData = {
       totalTickets: this.totalTickets,
       maxTicketCapacity: this.maxTickets,
-      ticketReleaseRate: this.ticketReleaseRate, 
+      ticketReleaseRate: this.ticketReleaseRate,
       customerRetrievalRate: this.customerRate,
     };
-  
-    // Debug payload
-    console.log('Payload sent to API:', ticketData);
-  
-    // Initialize tickets
+
     this.service.initializeTickets(ticketData).subscribe(
-      (response) => {  
-        console.log('Tickets initialized:', response); // Debug response
-        this.loadAvailableTickets(); // Refresh available tickets after adding new tickets
+      (response) => {
+        this.loadAvailableTickets();
       },
       (error) => {
-        console.error('Error initializing tickets:', error); // Debug error
+        console.error('Error initializing tickets:', error);
       }
     );
   }
-  
-  // Purchase tickets
+
   purchaseTickets(): void {
+    if (!this.isStarted) return;  // Prevent action if stop is clicked
+
     this.service.getAvailableTickets().subscribe((available) => {
       if (this.ticketCount > available) {
-        alert('Not enough tickets available!'); // Alert user if not enough tickets are available
+        alert('Not enough tickets available!');
       } else {
-        this.service.purchaseTickets(this.ticketCount).subscribe( // Purchase tickets
+        this.service.purchaseTickets(this.ticketCount).subscribe(
           (response) => {
-            console.log('Tickets purchased:', response);
-            this.loadAvailableTickets(); // Refresh tickets
+            this.loadAvailableTickets();
           },
           (error) => {
             console.error('Error purchasing tickets:', error);
@@ -92,22 +93,8 @@ export class TicketComponent implements OnInit {  // Ticket component class
         );
       }
     });
-  }  
-
-  // Reset tickets
-  resetTickets(): void {
-    this.service.resetTickets().subscribe(
-      (response) => {
-        console.log('Tickets reset:', response);
-        this.loadAvailableTickets(); // Reload available tickets after reset
-      },
-      (error) => {
-        console.error('Error resetting tickets:', error);
-      }
-    );
   }
 
-  // Reset form values
   resetForm(): void {
     this.maxTickets = 0;
     this.customerRate = 0;
@@ -116,3 +103,4 @@ export class TicketComponent implements OnInit {  // Ticket component class
     this.ticketCount = 0;
   }
 }
+

@@ -91,3 +91,26 @@ p {
   font-size: 1.2em;
   color: #333;
 }
+
+/* Button styling for Start and Stop buttons */
+.start-btn {
+  background-color: #28a745; /* Green color for Start */
+}
+
+.stop-btn {
+  background-color: #dc3545; /* Red color for Stop */
+}
+
+.start-btn:hover {
+  background-color: #218838;
+}
+
+.stop-btn:hover {
+  background-color: #c82333;
+}
+
+/* Disabled button styles */
+.start-btn:disabled, .stop-btn:disabled {
+  background-color: #d6d6d6;
+  cursor: not-allowed;
+}
