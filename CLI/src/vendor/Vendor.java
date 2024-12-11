@@ -14,10 +14,30 @@ public class Vendor implements Runnable {
         this.vendorId = vendorId;
     }
 
+//    @Override
+//    public void run() {
+//        int ticketId = 1;
+//        while (!Thread.currentThread().isInterrupted()) {
+//            for (int i = 0; i < releaseRate; i++) {
+//                if (ticketPool.addTicket(ticketId)) {
+//                    Logger.log("Vendor " + vendorId + " added ticket #" + ticketId);
+//                    ticketId++;
+//                } else {
+//                    Logger.log("Vendor " + vendorId + " could not add ticket (Pool full or limit reached).");
+//                }
+//            }
+//            try {
+//                Thread.sleep(1000); // Simulate time delay
+//            } catch (InterruptedException e) {
+//                Thread.currentThread().interrupt();
+//            }
+//        }
+//    }
+
     @Override
     public void run() {
         int ticketId = 1;
-        while (!Thread.currentThread().isInterrupted()) {
+        while (!Thread.currentThread().isInterrupted() && !ticketPool.allTicketsSold()) {
             for (int i = 0; i < releaseRate; i++) {
                 if (ticketPool.addTicket(ticketId)) {
                     Logger.log("Vendor " + vendorId + " added ticket #" + ticketId);
@@ -33,4 +53,5 @@ public class Vendor implements Runnable {
             }
         }
     }
+
 }

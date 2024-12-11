@@ -43,6 +43,15 @@ public class TicketPool {
         }
     }
 
+    public boolean allTicketsSold() {
+        lock.lock();
+        try {
+            return ticketsSold == totalTickets;
+        } finally {
+            lock.unlock();
+        }
+    }
+
     public int getTicketsSold() {
         return ticketsSold;
     }
@@ -51,3 +60,4 @@ public class TicketPool {
         return tickets.size();
     }
 }
+

@@ -29,15 +29,32 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         boolean running = false;
 
+        Thread monitorThread = new Thread(() -> {
+            while (!Thread.currentThread().isInterrupted()) {
+                if (ticketPool.allTicketsSold()) {
+                    vendors.forEach(Thread::interrupt);
+                    customers.forEach(Thread::interrupt);
+                    Logger.log("All tickets sold. System stopped.");
+                    break;
+                }
+                try {
+                    Thread.sleep(1000); // Check every second
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        });
+
         while (true) {
-            System.out.println("Enter command: [start | stop | exit]");
+            System.out.println("Enter command: [1: start | 2: stop | 3: exit]");
             String command = scanner.nextLine().toLowerCase();
 
             switch (command) {
-                case "start":
+                case "1":
                     if (!running) {
                         vendors.forEach(Thread::start);
                         customers.forEach(Thread::start);
+                        monitorThread.start();
                         running = true;
                         Logger.log("System started.");
                     } else {
@@ -45,10 +62,11 @@ public class Main {
                     }
                     break;
 
-                case "stop":
+                case "2":
                     if (running) {
                         vendors.forEach(Thread::interrupt);
                         customers.forEach(Thread::interrupt);
+                        monitorThread.interrupt();
                         running = false;
                         Logger.log("System stopped.");
                     } else {
@@ -56,14 +74,14 @@ public class Main {
                     }
                     break;
 
-                case "exit":
+                case "3":
                     if (running) {
                         vendors.forEach(Thread::interrupt);
                         customers.forEach(Thread::interrupt);
+                        monitorThread.interrupt();
                     }
                     Logger.log("Exiting program.");
                     return;
-
                 default:
                     Logger.log("Invalid command.");
             }

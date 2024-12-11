@@ -16,7 +16,7 @@ public class Customer implements Runnable {
 
     @Override
     public void run() {
-        while (!Thread.currentThread().isInterrupted()) {
+        while (!Thread.currentThread().isInterrupted() && !ticketPool.allTicketsSold()) {
             for (int i = 0; i < retrievalRate; i++) {
                 Integer ticket = ticketPool.retrieveTicket();
                 if (ticket != null) {
@@ -32,4 +32,6 @@ public class Customer implements Runnable {
             }
         }
     }
+
 }
+

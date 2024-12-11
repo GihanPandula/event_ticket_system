@@ -13,7 +13,7 @@ public class Logger {
     // Private constructor to prevent instantiation
     private Logger() {
         try {
-            writer = new PrintWriter(new FileWriter("ticket_system_log.txt", true)); // Append mode
+            writer = new PrintWriter(new FileWriter("log.txt", true)); // Append mode
         } catch (IOException e) {
             throw new RuntimeException("Failed to initialize logger", e);
         }

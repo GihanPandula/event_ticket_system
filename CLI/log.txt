@@ -1,0 +1,126 @@
+2024-12-11 22:52:46 - Invalid command.
+2024-12-11 22:52:49 - System started.
+2024-12-11 22:52:49 - Customer 2 purchased ticket #1
+2024-12-11 22:52:49 - Vendor 2 added ticket #1
+2024-12-11 22:52:49 - Vendor 2 added ticket #2
+2024-12-11 22:52:49 - Vendor 2 added ticket #3
+2024-12-11 22:52:49 - Vendor 2 added ticket #4
+2024-12-11 22:52:49 - Vendor 2 added ticket #5
+2024-12-11 22:52:49 - Vendor 2 added ticket #6
+2024-12-11 22:52:49 - Vendor 2 added ticket #7
+2024-12-11 22:52:49 - Vendor 1 added ticket #1
+2024-12-11 22:52:49 - Vendor 1 added ticket #2
+2024-12-11 22:52:49 - Vendor 1 added ticket #3
+2024-12-11 22:52:49 - Vendor 1 added ticket #4
+2024-12-11 22:52:49 - Vendor 1 added ticket #5
+2024-12-11 22:52:49 - Vendor 1 added ticket #6
+2024-12-11 22:52:49 - Vendor 1 added ticket #7
+2024-12-11 22:52:49 - Vendor 1 added ticket #8
+2024-12-11 22:52:49 - Vendor 1 added ticket #9
+2024-12-11 22:52:49 - Vendor 1 added ticket #10
+2024-12-11 22:52:49 - Customer 1 purchased ticket #1
+2024-12-11 22:52:49 - Customer 1 purchased ticket #2
+2024-12-11 22:52:49 - Customer 1 purchased ticket #3
+2024-12-11 22:52:49 - Customer 1 purchased ticket #4
+2024-12-11 22:52:49 - Customer 1 purchased ticket #5
+2024-12-11 22:52:49 - Customer 1 purchased ticket #6
+2024-12-11 22:52:49 - Vendor 2 added ticket #8
+2024-12-11 22:52:49 - Vendor 2 added ticket #9
+2024-12-11 22:52:49 - Vendor 2 added ticket #10
+2024-12-11 22:52:49 - Customer 2 found no tickets available.
+2024-12-11 22:52:49 - Customer 1 purchased ticket #7
+2024-12-11 22:52:49 - Customer 1 purchased ticket #2
+2024-12-11 22:52:49 - Customer 2 purchased ticket #8
+2024-12-11 22:52:49 - Customer 2 purchased ticket #4
+2024-12-11 22:52:49 - Customer 1 purchased ticket #3
+2024-12-11 22:52:49 - Customer 1 purchased ticket #6
+2024-12-11 22:52:49 - Customer 2 purchased ticket #5
+2024-12-11 22:52:49 - Customer 2 purchased ticket #7
+2024-12-11 22:52:49 - Customer 2 purchased ticket #8
+2024-12-11 22:52:49 - Customer 2 purchased ticket #9
+2024-12-11 22:52:49 - Customer 2 purchased ticket #10
+2024-12-11 22:52:49 - Customer 2 purchased ticket #9
+2024-12-11 22:52:50 - Customer 1 purchased ticket #10
+2024-12-11 22:52:50 - Customer 1 purchased ticket #11
+2024-12-11 22:52:50 - Customer 1 purchased ticket #11
+2024-12-11 22:52:50 - Customer 1 found no tickets available.
+2024-12-11 22:52:50 - Customer 1 found no tickets available.
+2024-12-11 22:52:50 - Customer 1 found no tickets available.
+2024-12-11 22:52:50 - Customer 1 found no tickets available.
+2024-12-11 22:52:50 - Customer 1 found no tickets available.
+2024-12-11 22:52:50 - Customer 1 found no tickets available.
+2024-12-11 22:52:50 - Vendor 1 added ticket #11
+2024-12-11 22:52:50 - Vendor 1 added ticket #12
+2024-12-11 22:52:50 - Vendor 1 added ticket #13
+2024-12-11 22:52:50 - Vendor 1 added ticket #14
+2024-12-11 22:52:50 - Vendor 1 added ticket #15
+2024-12-11 22:52:50 - Vendor 1 added ticket #16
+2024-12-11 22:52:50 - Vendor 1 added ticket #17
+2024-12-11 22:52:50 - Vendor 1 added ticket #18
+2024-12-11 22:52:50 - Vendor 1 added ticket #19
+2024-12-11 22:52:50 - Vendor 1 added ticket #20
+2024-12-11 22:52:50 - Vendor 2 added ticket #11
+2024-12-11 22:52:50 - Vendor 2 added ticket #12
+2024-12-11 22:52:50 - Vendor 2 added ticket #13
+2024-12-11 22:52:50 - Vendor 2 added ticket #14
+2024-12-11 22:52:50 - Vendor 2 added ticket #15
+2024-12-11 22:52:50 - Vendor 2 added ticket #16
+2024-12-11 22:52:50 - Vendor 2 added ticket #17
+2024-12-11 22:52:50 - Vendor 2 added ticket #18
+2024-12-11 22:52:50 - Vendor 2 added ticket #19
+2024-12-11 22:52:50 - Vendor 2 added ticket #20
+2024-12-11 22:52:50 - Customer 2 found no tickets available.
+2024-12-11 22:52:50 - Customer 2 purchased ticket #12
+2024-12-11 22:52:50 - Customer 2 purchased ticket #13
+2024-12-11 22:52:50 - Customer 2 purchased ticket #14
+2024-12-11 22:52:50 - Customer 2 purchased ticket #15
+2024-12-11 22:52:50 - Customer 2 purchased ticket #16
+2024-12-11 22:52:50 - Customer 2 purchased ticket #17
+2024-12-11 22:52:50 - Customer 1 found no tickets available.
+2024-12-11 22:52:50 - Customer 2 purchased ticket #18
+2024-12-11 22:52:50 - Customer 2 purchased ticket #19
+2024-12-11 22:52:50 - Customer 2 purchased ticket #20
+2024-12-11 22:52:51 - Vendor 1 added ticket #21
+2024-12-11 22:52:51 - Vendor 1 added ticket #22
+2024-12-11 22:52:51 - Vendor 1 added ticket #23
+2024-12-11 22:52:51 - Vendor 1 added ticket #24
+2024-12-11 22:52:51 - Vendor 1 added ticket #25
+2024-12-11 22:52:51 - Vendor 1 added ticket #26
+2024-12-11 22:52:51 - Vendor 1 added ticket #27
+2024-12-11 22:52:51 - Vendor 1 added ticket #28
+2024-12-11 22:52:51 - Vendor 1 added ticket #29
+2024-12-11 22:52:51 - Vendor 2 added ticket #21
+2024-12-11 22:52:51 - Vendor 2 could not add ticket (Pool full or limit reached).
+2024-12-11 22:52:51 - Vendor 2 could not add ticket (Pool full or limit reached).
+2024-12-11 22:52:51 - Vendor 1 could not add ticket (Pool full or limit reached).
+2024-12-11 22:52:51 - Vendor 2 could not add ticket (Pool full or limit reached).
+2024-12-11 22:52:51 - Vendor 2 could not add ticket (Pool full or limit reached).
+2024-12-11 22:52:51 - Vendor 2 could not add ticket (Pool full or limit reached).
+2024-12-11 22:52:51 - Vendor 2 could not add ticket (Pool full or limit reached).
+2024-12-11 22:52:51 - Vendor 2 could not add ticket (Pool full or limit reached).
+2024-12-11 22:52:51 - Vendor 2 could not add ticket (Pool full or limit reached).
+2024-12-11 22:52:51 - Vendor 2 could not add ticket (Pool full or limit reached).
+2024-12-11 22:52:51 - Customer 1 purchased ticket #12
+2024-12-11 22:52:51 - Customer 1 purchased ticket #14
+2024-12-11 22:52:51 - Customer 2 purchased ticket #13
+2024-12-11 22:52:51 - Customer 2 purchased ticket #15
+2024-12-11 22:52:51 - Customer 2 purchased ticket #17
+2024-12-11 22:52:51 - Customer 2 purchased ticket #18
+2024-12-11 22:52:51 - Customer 2 purchased ticket #19
+2024-12-11 22:52:51 - Customer 2 purchased ticket #20
+2024-12-11 22:52:51 - Customer 2 purchased ticket #21
+2024-12-11 22:52:51 - Customer 2 purchased ticket #22
+2024-12-11 22:52:51 - Customer 2 purchased ticket #23
+2024-12-11 22:52:51 - Customer 2 purchased ticket #24
+2024-12-11 22:52:51 - Customer 1 purchased ticket #16
+2024-12-11 22:52:51 - Customer 1 purchased ticket #25
+2024-12-11 22:52:51 - Customer 1 purchased ticket #26
+2024-12-11 22:52:51 - Customer 1 purchased ticket #27
+2024-12-11 22:52:51 - Customer 1 purchased ticket #28
+2024-12-11 22:52:51 - Customer 1 purchased ticket #29
+2024-12-11 22:52:51 - Customer 1 purchased ticket #21
+2024-12-11 22:52:51 - Customer 1 found no tickets available.
+2024-12-11 22:52:52 - All tickets sold. System stopped.
+2024-12-11 22:53:08 - System is already running.
+2024-12-11 22:53:10 - System stopped.
+2024-12-11 22:53:13 - Exiting program.
