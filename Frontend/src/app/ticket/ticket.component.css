@@ -5,27 +5,25 @@ body {
   padding: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  align-items: flex-start;
+  min-height: 100vh;
 }
 
 .container {
-  width: 80%;
-  max-width: 800px;
+  width: 90%;
+  max-width: 1200px;
   margin: 20px auto;
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 }
 
 .card {
   background-color: #ffffff;
   padding: 20px;
-  border-radius: 16px; 
+  border-radius: 16px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
-  width: 60%;
-  margin: 0 auto; 
 }
 
 .card:hover {
@@ -40,26 +38,38 @@ h2 {
   padding-bottom: 10px;
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
 label {
-  display: block;
-  margin-bottom: 5px;
   font-weight: bold;
   color: #555;
 }
 
 input {
-  width: 100%;
   padding: 10px;
-  margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box;
   transition: border-color 0.3s ease;
 }
 
 input:focus {
   border-color: #007bff;
   outline: none;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
 }
 
 .btn {
@@ -72,33 +82,16 @@ input:focus {
   transition: background-color 0.3s ease;
 }
 
-.button-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.reset-btn {
-  margin-left: auto;
-}
-
 .btn:hover {
   background-color: #0056b3;
 }
 
-p {
-  font-size: 1.2em;
-  color: #333;
-}
-
-/* Button styling for Start and Stop buttons */
 .start-btn {
-  background-color: #28a745; /* Green color for Start */
+  background-color: #28a745;
 }
 
 .stop-btn {
-  background-color: #dc3545; /* Red color for Stop */
+  background-color: #dc3545;
 }
 
 .start-btn:hover {
@@ -109,8 +102,37 @@ p {
   background-color: #c82333;
 }
 
-/* Disabled button styles */
-.start-btn:disabled, .stop-btn:disabled {
-  background-color: #d6d6d6;
-  cursor: not-allowed;
+.reset-btn {
+  background-color: #ffc107;
+}
+
+.reset-btn:hover {
+  background-color: #e0a800;
+}
+
+p {
+  font-size: 1.2em;
+  color: #333;
+}
+
+/* Status indicator styles */
+.status-indicator p {
+  font-size: 1.2em;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.status-indicator span {
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.status-indicator .running {
+  background-color: #28a745; /* Green for running */
+}
+
+.status-indicator .stopped {
+  background-color: #dc3545; /* Red for stopped */
 }

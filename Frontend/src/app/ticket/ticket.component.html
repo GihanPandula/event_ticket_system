@@ -1,85 +1,116 @@
 <div class="container">
+  <!-- Ticket Configuration Section -->
   <div class="card">
-    <h2>ADD TICKETS</h2>
-
-    <!-- Start and Stop buttons -->
-    <!-- <div class="button-container">
-      <button type="button" class="btn" (click)="start()">Start</button>
-      <button type="button" class="btn stop-btn" (click)="stop()">Stop</button>
-    </div> -->
+    <h2>TICKET CONFIGURATION</h2>
     <div class="button-container">
-      <button type="button" class="btn start-btn" [disabled]="isStarted" (click)="startFunction()">Start</button>
-      <button type="button" class="btn stop-btn" [disabled]="!isStarted" (click)="stopFunction()">Stop</button>
+      <button
+        type="button"
+        class="btn start-btn"
+        [disabled]="isStarted"
+        (click)="startFunction()"
+        title="{{ isStarted ? 'Already started' : 'Click to start' }}"
+      >
+        Start
+      </button>
+      <button
+        type="button"
+        class="btn stop-btn"
+        [disabled]="!isStarted"
+        (click)="stopFunction()"
+        title="{{ !isStarted ? 'Not running yet' : 'Click to stop' }}"
+      >
+        Stop
+      </button>
     </div>
     
-    <br>
-
-    <form (ngSubmit)="addTickets()">
-      <label for="totalTickets">Total Tickets</label>
-      <input
-        type="number"
-        id="totalTickets"
-        [(ngModel)]="totalTickets"
-        name="totalTickets"
-        placeholder="Enter total tickets"
-        required
-      />
-
-      <label for="maxTickets">Max Ticket Count</label>
-      <input
-        type="number"
-        id="maxTickets"
-        [(ngModel)]="maxTickets"
-        name="maxTickets"
-        placeholder="Enter max ticket count"
-        required
-      />
-
-      <label for="customerRate">Customer Retrieval Rate</label>
-      <input
-        type="number"
-        id="customerRate"
-        [(ngModel)]="customerRate"
-        name="customerRate"
-        placeholder="Enter customer rate"
-        required
-      />
-
-      <label for="ticketReleaseRate">Ticket Release Rate</label>
-      <input
-        type="number"
-        id="ticketReleaseRate"
-        [(ngModel)]="ticketReleaseRate"
-        name="ticketReleaseRate"
-        placeholder="Enter ticket release rate"
-        required
-      />
-
+    <!-- Status indicator -->
+    <div class="status-indicator">
+      <p>Status: <span [class.running]="isStarted" [class.stopped]="!isStarted">{{ isStarted ? 'Running' : 'Stopped' }}</span></p>
+    </div>
+    
+    <form (ngSubmit)="addTickets()" class="form">
+      <div class="form-group">
+        <label for="totalTickets">Total Tickets</label>
+        <input
+          type="number"
+          id="totalTickets"
+          [(ngModel)]="totalTickets"
+          name="totalTickets"
+          placeholder="Enter total tickets"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="maxTickets">Max Ticket Count</label>
+        <input
+          type="number"
+          id="maxTickets"
+          [(ngModel)]="maxTickets"
+          name="maxTickets"
+          placeholder="Enter max ticket count"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="customerRate">Customer Retrieval Rate</label>
+        <input
+          type="number"
+          id="customerRate"
+          [(ngModel)]="customerRate"
+          name="customerRate"
+          placeholder="Enter customer rate"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="ticketReleaseRate">Ticket Release Rate</label>
+        <input
+          type="number"
+          id="ticketReleaseRate"
+          [(ngModel)]="ticketReleaseRate"
+          name="ticketReleaseRate"
+          placeholder="Enter ticket release rate"
+          required
+        />
+      </div>
       <div class="button-container">
-        <button type="submit" class="btn">ADD</button>
-        <button type="button" class="btn reset-btn" (click)="resetForm()">RESET</button>
+        <button type="submit" class="btn">Add</button>
+        <button type="button" class="btn reset-btn" (click)="resetForm()">Reset</button>
       </div>
     </form>
   </div>
 
+  <!-- Available Tickets Section -->
   <div class="card">
     <h2>AVAILABLE TICKETS</h2>
     <p>Available Tickets: <span id="availableTickets">{{ availableTickets }}</span></p>
   </div>
 
+  <!-- Purchase Tickets Section -->
   <div class="card">
     <h2>PURCHASE TICKETS</h2>
-    <form (ngSubmit)="purchaseTickets()">
-      <label for="ticketCount">Ticket Count</label>
-      <input
-        type="number"
-        id="ticketCount"
-        [(ngModel)]="ticketCount"
-        name="ticketCount"
-        placeholder="Enter ticket count"
-        required
-      />
+    <form (ngSubmit)="purchaseTickets()" class="form">
+      <div class="form-group">
+        <label for="ticketCount">Ticket Count</label>
+        <input
+          type="number"
+          id="ticketCount"
+          [(ngModel)]="ticketCount"
+          name="ticketCount"
+          placeholder="Enter ticket count"
+          required
+        />
+      </div>
       <button type="submit" class="btn">Purchase</button>
     </form>
+  </div>
+
+  <!-- Ticket Pool Status Section -->
+  <div class="card">
+    <h2>TICKET POOL STATUS</h2>
+    <p><strong>Total Tickets:</strong> {{ totalTickets }}</p>
+    <p><strong>Max Ticket Count:</strong> {{ maxTickets }}</p>
+    <p><strong>Customer Retrieval Rate:</strong> {{ customerRate }}</p>
+    <p><strong>Ticket Release Rate:</strong> {{ ticketReleaseRate }}</p>
   </div>
 </div>
