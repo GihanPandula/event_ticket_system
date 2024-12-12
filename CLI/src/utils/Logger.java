@@ -6,6 +6,12 @@ import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+// oop concepts used:
+// 1. Inheritance: The Logger class extends the Singleton class to implement the Singleton design pattern.
+// 2. Encapsulation: The Logger class encapsulates the log method to log messages to the console.
+// 3. Polymorphism: The Logger class implements the Singleton design pattern using polymorphism.
+// 4. Abstraction: The Logger class abstracts the logging functionality from the rest of the system.
+
 public class Logger {
     private static Logger instance;
     private static PrintWriter writer;
